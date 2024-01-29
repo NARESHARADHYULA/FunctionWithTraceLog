@@ -19,6 +19,7 @@ namespace FunctionWithTraceLog
                 .ConfigureAppConfiguration((HostBuilderContext hostContext, IConfigurationBuilder builder) =>
                 {
                     // Add custom configuration sources
+                    builder.AddJsonFile("appsettings.json", optional: true);
                 })
                 .ConfigureServices((HostBuilderContext hostContext, IServiceCollection services) =>
                 {
@@ -56,7 +57,7 @@ namespace FunctionWithTraceLog
                   .ConfigureLogging((hostingContext, logging) =>
                   {
                       // Make sure the configuration of the appsettings.json file is picked up.
-                      //logging.AddConfiguration(hostingContext.Configuration.GetSection("WorkerLogging"));
+                      logging.AddConfiguration(hostingContext.Configuration.GetSection("WorkerLogging"));
                   })
                 .Build();
 

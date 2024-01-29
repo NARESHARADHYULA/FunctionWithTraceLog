@@ -12,8 +12,12 @@ namespace FunctionWithTraceLog.Bl
 
         public async Task<bool> StartEvent()
         {
-            _logger.LogWarning($"logging warning in bl");
             _logger.LogTrace($"logging trace in bl");
+            _logger.LogDebug($"logging debug in bl");
+            _logger.LogInformation($"logging info in bl");
+            _logger.LogWarning($"logging warning in bl");
+            _logger.LogError($"logging error in bl");
+            _logger.LogCritical($"logging critical in bl");
             return true;
         }
     }
