@@ -9,7 +9,7 @@ namespace FunctionWithTraceLog
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var host = new HostBuilder()
                 .ConfigureFunctionsWebApplication((worker) =>
@@ -23,6 +23,9 @@ namespace FunctionWithTraceLog
                 })
                 .ConfigureServices((HostBuilderContext hostContext, IServiceCollection services) =>
                 {
+                    services
+                        .AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
+
                     // register DI
                     // Add ApplicationInsights services for non-HTTP applications.
                     // See https://learn.microsoft.com/en-us/azure/azure-monitor/app/worker-service and
@@ -61,7 +64,7 @@ namespace FunctionWithTraceLog
                   })
                 .Build();
 
-            host.Run();
+            await host.RunAsync();
         }
     }
 }

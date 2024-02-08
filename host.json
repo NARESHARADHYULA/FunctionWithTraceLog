@@ -3,14 +3,14 @@
   "logging": {
     "applicationInsights": {
       "samplingSettings": {
-        "isEnabled": true,
+        "isEnabled": false,
         "excludedTypes": "Request"
       }
     },
     "logLevel": {
       "Azure.Core": "Error",
       "Azure.Identity": "Critical",
-      "Function": "Information",
+      "Function": "Trace",
       "Host.Results": "Trace",
       "Host.Aggregator": "Warning",
       "Function.FutureProspect": "Trace",

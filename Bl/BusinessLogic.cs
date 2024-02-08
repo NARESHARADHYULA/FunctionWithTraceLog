@@ -12,6 +12,8 @@ namespace FunctionWithTraceLog.Bl
 
         public async Task<bool> StartEvent()
         {
+            var x = _logger.IsEnabled(LogLevel.Trace);
+            _logger.LogInformation($"trace is enabled :{x}");
             _logger.LogTrace($"logging trace in bl");
             _logger.LogDebug($"logging debug in bl");
             _logger.LogInformation($"logging info in bl");
